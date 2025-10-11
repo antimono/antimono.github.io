@@ -4,7 +4,7 @@ body {
   text-align: center;
 }
 
-.hero {
+.base_homepage {
   position: relative;
   height: 100vh;
   background-image: url('https://media.cntraveler.com/photos/5eb18e42fc043ed5d9779733/4:3/w_3820,h_2865,c_limit/BlackForest-Germany-GettyImages-147180370.jpg');
@@ -17,7 +17,7 @@ body {
   color: white;
 }
 
-.hero::before {
+.base_homepage::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
@@ -26,7 +26,7 @@ body {
   z-index: 0;
 }
 
-.hero > * {
+.base_homepage > * {
   position: relative;
   z-index: 1;
 }
