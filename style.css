@@ -4,10 +4,22 @@ body {
   text-align: center;
 }
 
-.base_homepage {
+#leftalign {
+      text-align: left
+}
+
+#centeralign {
+      text-align: center
+}
+
+ #rightalign {
+      text-align: right
+}
+
+.body_homepage {
   position: relative;
   height: 100vh;
-  background-image: url("images/datanode.png");
+  background-image: url("images/datanodeBG.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -17,7 +29,7 @@ body {
   color: white;
 }
 
-.base_homepage::before {
+.body_homepage::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
@@ -26,7 +38,7 @@ body {
   z-index: 0;
 }
 
-.base_homepage > * {
+.body_homepage > * {
   position: relative;
   z-index: 1;
 }

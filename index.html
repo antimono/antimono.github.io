@@ -5,12 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DataNode</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+    nav {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: rgba(0, 0, 0, 0.85);
+      width: 100%;
+      padding-top: 15px;
+      color: white;
+      align-items: center;
+    }
+    
+    .heading_homepage {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: 30px;
+      padding: 0;
+    }    
+
+    .menu-icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .menu-icon span {
+      display: flex;
+      height: 6px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    </style>
 </head>
+
 <body>
-    <div class="base_homepage">
-      <h1>Welcome to DataNode</h1>
-      <p>A Simple Data Library - Filled with Shared Materials</p>
-      <button>Browse the Library</button>
-    </div>
+  <nav> 
+    <div class="heading_homepage">
+      <div id="leftalign">
+        <img src="images/datanode.png" alt="logo" width="10" height="0">
+      </div>
+
+      <div id="centeralign">
+        <h2>test</h2>
+      </div>
+
+      <div id="leftalign">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+  </nav>
+
+  <div class="body_homepage">
+    <h1>Welcome to DataNode</h1>
+    <p>A Simple Data Library - Filled with Shared Materials</p>
+    <button>Browse the Library</button>
+  </div>
 </body>
 </html>
