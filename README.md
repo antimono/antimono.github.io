@@ -1,9 +1,10 @@
 # hello there!
-## welcome to DataNode, a sleek, easy-to-use, sharable storage solution
+## welcome to DataNode
 
-this is my simple website DataNode, to temporarily store and transfer 📭 data 
+this is my simple website DataNode, to temporarily store and transfer 📭 data<br>
+it's an easy-to-use, sharable storage solution which looks **modern** and **simple** through *nodes*
 
-it's currently a work-in-progress, but in the future may be released for early access ⚙️<br>
+although currently a work-in-progress, it may, in the future be released for early access ⚙️<br>
 hopefully it won't be monetised, but there will likely be monetisation for more and different 📦 *nodes* 📤
 
 
