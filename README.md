@@ -1,5 +1,5 @@
-# orcaBank
-## name 
+# welcome to orcaBank
+## name origin
 
 banks 🏦 give loans
 orcas are apex sharks 🦈
