@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <h1>User Dashboard</h1>
+
+    <div class="card">
+      <h2>Current Loan</h2>
+      <p id="loanAmount">$0</p>
+    </div>
+
+    <div class="card">
+      <h2>Current Debt</h2>
+      <p id="debtAmount">$0</p>
+    </div>
+
+    <div class="card">
+      <h2>Request Loan</h2>
+      <input id="loanRequest" type="number" placeholder="Amount">
+      <button id="requestLoanBtn">Submit</button>
+    </div>
+
+    <div class="card">
+      <h2>Request Loan Payoff</h2>
+      <input id="payoffRequest" type="number" placeholder="Amount">
+      <button id="requestPayoffBtn">Submit</button>
+    </div>
+
+    <div class="card">
+      <h2>Change Password</h2>
+      <input id="newPassword" type="password" placeholder="New Password">
+      <button id="changePasswordBtn">Change Password</button>
+    </div>
+
+  </div>
+
+  <script type="module">
+
+    import { auth, db } from './firebase.js';
+
+    import {
+      onAuthStateChanged,
+      updatePassword
+    } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+    import {
+      doc,
+      getDoc,
+      addDoc,
+      collection,
+      serverTimestamp
+    } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+    let currentUser;
+
+    onAuthStateChanged(auth, async (user) => {
+
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      currentUser = user;
+
+      const userRef = doc(db, 'users', user.uid);
+      const userSnap = await getDoc(userRef);
+
+      const data = userSnap.data();
+
+      document.getElementById('loanAmount').innerText = `$${data.currentLoan}`;
+      document.getElementById('debtAmount').innerText = `$${data.currentDebt}`;
+    });
+
+    document.getElementById('requestLoanBtn').onclick = async () => {
+
+      const amount = Number(document.getElementById('loanRequest').value);
+
+      await addDoc(collection(db, 'requests'), {
+        uid: currentUser.uid,
+        type: 'loan',
+        amount,
+        status: 'pending',
+        createdAt: serverTimestamp()
+      });
+
+      alert('Loan request submitted');
+    };
+
+    document.getElementById('requestPayoffBtn').onclick = async () => {
+
+      const amount = Number(document.getElementById('payoffRequest').value);
+
+      await addDoc(collection(db, 'requests'), {
+        uid: currentUser.uid,
+        type: 'payoff',
+        amount,
+        status: 'pending',
+        createdAt: serverTimestamp()
+      });
+
+      alert('Payoff request submitted');
+    };
+
+    document.getElementById('changePasswordBtn').onclick = async () => {
+
+      const newPassword = document.getElementById('newPassword').value;
+
+      try {
+        await updatePassword(currentUser, newPassword);
+        alert('Password updated');
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+  </script>
+</body>
+</html>
